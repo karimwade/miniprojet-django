@@ -15,5 +15,6 @@ def inserData(request):
         mail=request.POST.get("mail")
         gender=request.POST.get("gender")
         print(name,mail,gender)
-        #query=Student(name=name)
+        query=Student(name=name,mail=mail,gender=gender)
+        query.save()
     return render(request,"index.html")
