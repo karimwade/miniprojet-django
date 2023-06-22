@@ -2,7 +2,10 @@ from django.shortcuts import render
 from .models import Student
 # Create your views here.
 def index(request):
-    return render(request,"index.html")
+    #load data on the template
+    data=Student.objects.all()
+    context={"data":data}
+    return render(request,"index.html",context)
 
 #about view
 def about(request):
@@ -10,6 +13,8 @@ def about(request):
 
 #insert data view
 def inserData(request):
+    data=Student.objects.all()
+    context={"data":data}
     if request.method == "POST":
         name=request.POST.get("name")
         mail=request.POST.get("mail")
@@ -17,4 +22,4 @@ def inserData(request):
         print(name,mail,gender)
         query=Student(name=name,mail=mail,gender=gender)
         query.save()
-    return render(request,"index.html")
+    return render(request,"index.html",context)
