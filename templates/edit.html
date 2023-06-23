@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-md-6">
+                <h2 class="text-black bg-info text-center p-3">Update Student</h2>
+                <form action="/update/{{d.id}}" method="post">{% csrf_token %}
+                    <!-- insert est le chemin(path) ou on doit soumettre le formulaire -->
+                    <div class="form-group">
+                        <input type="text" value="{{d.name}}" class="form-control" placeholder="Enter The Student Name" name="name" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <input type="email" value="{{d.mail}}" class="form-control mt-2" placeholder="Enter The Student Mail" name="mail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender"></label>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option selected>{{d.gender}}</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">Update</button>
+                        <button class="btn btn-danger" type="reset">Erase</button>
+                      </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -25,10 +25,6 @@
                     <div class="form-group">
                         <input type="email" class="form-control mt-2" placeholder="Enter The Student Mail" name="mail" required>
                     </div>
-
-                    <!-- <div class="form-group">
-                        <input type="text" class="form-control mt-2" placeholder="Enter The Student Mark" name="name" required>
-                    </div> -->
                     
                     <div class="form-group">
                         <label for="gender"></label>
@@ -58,16 +54,18 @@
               </tr>
             </thead>
             <tbody>
+              <!-- Boucle for pour l'itteration des données -->
               {% for d in data %}
                 <tr>
                   <th scope="row">{{d.id}}</th>
                   <td>{{d.name}}</td>
                   <td>{{d.mail}}</td>
                   <td>{{d.gender}}</td>
-                  <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
-                  <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+                  <td><a href="/update/{{d.id}}" type="button" class="btn btn-outline-primary">Edit</button></td>
+                  <td><a href="/delete/{{d.id}}" type="button" class="btn btn-outline-danger">Delete</button></td>
                 </tr>
-               {% endfor %} 
+              {% endfor %} 
+              <!-- fin boucle for -->
             </tbody>
           </table>
         </div>

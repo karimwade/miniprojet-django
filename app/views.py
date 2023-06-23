@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Student
 # Create your views here.
 def index(request):
@@ -22,4 +22,30 @@ def inserData(request):
         print(name,mail,gender)
         query=Student(name=name,mail=mail,gender=gender)
         query.save()
+        return redirect("/")
     return render(request,"index.html",context)
+
+#update view
+def updateData(request,id):
+    if request.method=="POST":
+        name=request.POST["name"]
+        mail=request.POST["mail"]
+        gender=request.POST["gender"]
+        dedit=Student.objects.get(id=id)
+        dedit.name=name
+        dedit.mail=mail
+        dedit.gender=gender
+        dedit.save()
+        return redirect("/")
+    #Recupere l'id du donnée à modifier
+    d=Student.objects.get(id=id)
+    context={"d":d}
+    return render(request,"edit.html",context)
+
+
+#delete view
+def deleteData(request,id):
+    data=Student.objects.get(id=id)
+    data.delete()
+    # context={"data":data}
+    return redirect("/")
