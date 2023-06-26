@@ -39,22 +39,6 @@ class StudentModelTest(TestCase):
         # Vérifier que l'étudiant a été créé dans la base de données
         self.assertTrue(Student.objects.filter(name=name, mail=mail, gender=gender).exists())
 
-    # def test_read_student(self):
-    #     # URL de la vue de détail (read)
-    #     #url= reverse('index')
-    #     #response = self.client.get(url)
-    #     url = reverse('insert', kwargs={'pk': self.student.pk})
-
-    #     # Effectuer la requête GET pour obtenir les détails de l'étudiant
-    #     response = self.client.get(url)
-
-    #     # Vérifier que la requête a réussi (code de statut HTTP 200)
-    #     self.assertEqual(response.status_code, 200)
-
-    #     # Vérifier que les données de l'étudiant sont correctes
-    #     self.assertEqual(response.context['student'].name, self.student.name)
-    #     self.assertEqual(response.context['student'].mail, self.student.mail)
-    #     self.assertEqual(response.context['student'].gender, self.student.gender)
 
     def test_update_student(self):
         # -----------------1er methode--------------------------#
